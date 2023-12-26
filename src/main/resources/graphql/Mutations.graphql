@@ -1,0 +1,12 @@
+input ComputerDTOInput {
+    proce : String
+    ram : Int
+    hardDrive : String
+    price : Float
+    macAddress : String
+}
+
+type Mutation{
+    saveComputer(Computer: ComputerDTOInput): ComputerDTO
+    deleteComputer(id: ID): ComputerDTO
+}
