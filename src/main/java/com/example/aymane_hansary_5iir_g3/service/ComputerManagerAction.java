@@ -4,16 +4,20 @@ import com.example.aymane_hansary_5iir_g3.doa.entities.Computer;
 import com.example.aymane_hansary_5iir_g3.doa.repositories.ComputerRepository;
 import com.example.aymane_hansary_5iir_g3.service.dtos.ComputerDTO;
 import com.example.aymane_hansary_5iir_g3.service.mappers.ComputerMapper;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.xml.stream.events.StartDocument;
+import java.util.ArrayList;
+import java.util.List;
 
-@Component @RequiredArgsConstructor
+@Component
 public class ComputerManagerAction implements ComputerManager{
-    final private ComputerRepository computerRepository;
-    final private ComputerMapper computerMapper;
+    @Autowired
+    public ComputerRepository computerRepository;
+    @Autowired
+    public ComputerMapper computerMapper;
 
     @Override
     public ComputerDTO saveComputer(ComputerDTO computerDTO) {
@@ -31,22 +35,34 @@ public class ComputerManagerAction implements ComputerManager{
         );
     }
 
-
     @Override
     public ComputerDTO deleteComputer(Long id) {
-        //ComputerDTO computerDTO = computerMapper.
-        return null;
+        Computer computer = computerRepository.findById(id).get();
+        if(computer.getId_Pc().equals(id)){
+           computerRepository.delete(computer);
+        }
+        return computerMapper.fromComputerToComputerDTO(computer);
     }
 
     @Override
-    public ComputerDTO getComputerByPrice(Float price) {
-        return computerMapper.fromComputerToComputerDTO(
-                computerRepository.findByPrice(price).get()
-        );
+    public List<ComputerDTO> getComputerByPrice(Float price) {
+        List<Computer> computerList = computerRepository.findByPrice(price);
+        List<ComputerDTO> computerDTOS = new ArrayList<>();
+
+        for (Computer computer: computerList){
+            computerDTOS.add(computerMapper.fromComputerToComputerDTO(computer));
+        }
+        return computerDTOS;
     }
 
     @Override
-    public ComputerDTO getComputerByProce(String proce) {
-        return null;
+    public List<ComputerDTO> getComputerByProce(String proce) {
+        List<Computer> computerList = computerRepository.findByProce(proce);
+        List<ComputerDTO> computerDTOS = new ArrayList<>();
+
+        for (Computer computer: computerList){
+            computerDTOS.add(computerMapper.fromComputerToComputerDTO(computer));
+        }
+        return computerDTOS;
     }
 }

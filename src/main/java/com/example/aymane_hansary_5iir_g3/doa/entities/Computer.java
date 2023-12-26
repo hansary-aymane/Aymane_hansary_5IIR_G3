@@ -17,8 +17,8 @@ public class Computer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_Pc;
     private String proce;
-    private int ram;
+    private Integer ram;
     private String hardDrive;
-    private float price;
+    private Float price;
     private String macAddress;
 }

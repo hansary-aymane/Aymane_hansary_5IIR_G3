@@ -20,10 +20,10 @@ public class AymaneHansary5IirG3Application {
 	CommandLineRunner start(ComputerRepository computerRepository) {
 		return args -> {
 			List<Computer> computerList =  List.of(
-					Computer.builder().proce("A").ram(4).hardDrive("aaaaaaa").price(3333).macAddress("aa").build(),
-					Computer.builder().proce("Z").ram(4).hardDrive("zzzzzzz").price(3333).macAddress("zz").build(),
-					Computer.builder().proce("x").ram(4).hardDrive("eeeeeee").price(3333).macAddress("ee").build(),
-					Computer.builder().proce("B").ram(4).hardDrive("bbbbbbb").price(3333).macAddress("bb").build()
+					Computer.builder().proce("A").ram(4).hardDrive("aaaaaaa").price(3333F).macAddress("aa").build(),
+					Computer.builder().proce("Z").ram(4).hardDrive("zzzzzzz").price(3333F).macAddress("zz").build(),
+					Computer.builder().proce("x").ram(4).hardDrive("eeeeeee").price(3333F).macAddress("ee").build(),
+					Computer.builder().proce("B").ram(4).hardDrive("bbbbbbb").price(3333F).macAddress("bb").build()
 			);
 			computerRepository.saveAll(computerList);
 		};

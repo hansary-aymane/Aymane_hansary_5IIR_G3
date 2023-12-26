@@ -1,12 +1,4 @@
-type ComputerDTO {
-    proce : String
-    ram : Int
-    hardDrive : String
-    price : Float
-    macAddress : String
-}
-
 type Query{
-    getComputerByProce(proce: String) : ComputerDTO
-    getComputerByPrice(price: Float) : ComputerDTO
+    getComputerByProce(proce:String):[ComputerDTO]
+    getComputerByPrice(price:Float):[ComputerDTO]
 }

@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor @AllArgsConstructor
 public class ComputerDTO {
     private String proce;
-    private int ram;
+    private Integer ram;
     private String hardDrive;
-    private float price;
+    private Float price;
     private String macAddress;
 }
